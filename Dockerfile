@@ -91,11 +91,11 @@ ENV NEXT_TELEMETRY_DISABLED=1
 
 # Build tools for native module compilation
 # apt-get update needed here because base's rm -rf clears the shared cache
-RUN --mount=type=cache,id=s/92ca8a61-c1ba-421f-a389-d48ac7258c2d-apt-cache,target=/var/cache/apt,sharing=locked \
-  --mount=type=cache,id=s/92ca8a61-c1ba-421f-a389-d48ac7258c2d-apt-lists,target=/var/lib/apt/lists,sharing=locked \
-  apt-get update \
-  && apt-get install -y --no-install-recommends python3 make g++ \
-  && rm -rf /var/lib/apt/lists/*
+RUN --mount=type=cache,id=s/28350af1-189e-4c55-94e1-dadbcb7ed27a-apt-cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,id=s/28350af1-189e-4c55-94e1-dadbcb7ed27a-apt-lists,target=/var/lib/apt/lists,sharing=locked \
+    apt-get update \
+    && apt-get install -y --no-install-recommends python3 make g++ \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY package*.json ./
 # Workspace package manifests MUST be present before `npm ci` so npm materializes
